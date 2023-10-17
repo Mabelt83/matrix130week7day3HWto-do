@@ -1,82 +1,74 @@
-const itemsContainer = document.getElementById("items");
-const itemTemplate = document.getElementById("itemTemplate");
-const addButton = document.getElementById("add");
-
-let items = getItems();
-
-function getItems() {
-    const value = localStorage.getItem("todo-test") || "[]";
-
-    return JSON.parse(value);
-
-}
-
-function setItems(item) {
-    const itemsJson = JSON.stringify(item);
-
-    localStorage.setItem("todo-test", itemsJson);
-}
+const body = document.body
+body.style.backgroundColor = 'white'
+body.style.color = 'black'
+body.style.textAlign = 'center'
 
 
-function addItem() {
-    items.unshift({
-        description: "",
-        completed: false
-    });
 
-    setItems(items)
-    refreshList();
+const listForm = document.querySelector('#list-form')
+const listContainer = document.querySelector('#list-container')
 
-function updateItem(item, key, value) {
-    item[key] = value;
-    setItems(items);
-    refreshList();
-}
+const toDoAPP = document.createElement('ul')
+toDoApp.innerText = 'TO DO APP'
+toDoAPP.style.fontSize = '50px'; toDoAPP.style.listStyle = 'none'
+toDoAPP.style.marginLeft = '100px'; toDoAPP.style.marginRight = '575px'
 
+listContainer.append(toDoAPP)
 
-    function refreshList() {
-        items.sort((a,b) => {
-            if (a.completed) {
-                return 1
-            }
+listItemApp.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const listItem = getItem()
+    const itemDesc = getDesc()
+    ListItemAPP(listItem, itemDesc)}
+    )
+    
 
-            if (b.completed) {
-                return -1;
-            }
-
-            return a.description < b.description ? -1 : 1;
-        });
     
 
 
-        itemsContainer.innerHTML = "";
-           
-        for (const item of items) {
-            const itemElement = itemTemplate.content.cloneNode(true);
-            const descriptionInput = itemElement.querySelector(".item-description");
-            const completedInput = itemElement.querySelector(".item-completed");
-
-            descriptionInput.value = item.description;
-            completedInput.checked = item.completed;
-
-            descriptionInput.addEventListener("change", () => {
-                updateItem(item, "description", descriptionInput.value);
-            });
-
-            completedInput.addEventListener("change", () => {
-                updateItem(item, "completed", completedInput.checked);
-            });
-
-            itemsContainer.append(itemElement);
-        }
-
-    }
+    
 
 
 
-addButton.addEventListener("click", () => {
-    addItem();
-});
 
+// script.js
 
-refreshList()
+// Wait until the HTML content is fully loaded before running the script
+//document.addEventListener("DOMContentLoaded", function() {
+    // Reference to the form element
+    // ...
+
+    // Reference to the list that displays the to-do items
+    // ...
+
+    // Reference to the input field for the title of the to-do item
+    // ...
+
+    // Reference to the textarea for the description of the to-do item
+    // ...
+
+    // Event listener for the form submission
+    //todoForm.addEventListener("submit", function(event) {
+        // Prevent the default form submission action
+        // ...
+
+        // Create a new list item for the to-do
+        // ...
+
+        // Set the inner HTML of the list item to the title and description
+        // ...
+
+        // Attach a click event to the list item
+        //listItem.addEventListener("click", function() {
+            // If the item is already marked as done, remove it from the list
+            // ...
+
+            // Otherwise, mark the item as done by adding the "done" class
+            // ...
+     
+
+        // Append the newly created list item to the to-do list
+        // ...
+
+        // Clear the form fields after adding the to-do item
+ 
